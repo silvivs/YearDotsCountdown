@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  YearDotsCountdown
 //
-//  Created by Jónatas Silva on 10/01/26.
+//  Created by Philipe Silva on 10/01/26.
 //
 
 import SwiftUI
