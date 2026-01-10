@@ -2,15 +2,17 @@
 //  YearDotsCountdownTests.swift
 //  YearDotsCountdownTests
 //
-//  Created by Jónatas Silva on 10/01/26.
+//  Created by Philipe Silva on 10/01/26.
 //
 
 import Testing
+@testable import YearDotsCountdown
 
 struct YearDotsCountdownTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test func testDaysInYear() {
+        let app = ContentView()
+        #expect(app.daysInYear == 365)
     }
 
 }
