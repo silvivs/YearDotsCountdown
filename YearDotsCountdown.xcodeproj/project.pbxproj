@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E46AEB882F12EC1000B40B18 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46AEB872F12EC1000B40B18 /* WidgetKit.framework */; };
+		E46AEB8A2F12EC1000B40B18 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46AEB892F12EC1000B40B18 /* SwiftUI.framework */; };
+		E46AEB952F12EC1100B40B18 /* YearDotsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		E46AEB642F12B1C500B40B18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = E46AEB552F12B1C400B40B18;
 			remoteInfo = YearDotsCountdown;
 		};
+		E46AEB932F12EC1100B40B18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E46AEB4E2F12B1C400B40B18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E46AEB842F12EC1000B40B18;
+			remoteInfo = YearDotsWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E46AEB9A2F12EC1100B40B18 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E46AEB952F12EC1100B40B18 /* YearDotsWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E46AEB562F12B1C400B40B18 /* YearDotsCountdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YearDotsCountdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46AEB632F12B1C500B40B18 /* YearDotsCountdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YearDotsCountdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46AEB6D2F12B1C500B40B18 /* YearDotsCountdownUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YearDotsCountdownUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YearDotsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46AEB872F12EC1000B40B18 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E46AEB892F12EC1000B40B18 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E46AEB962F12EC1100B40B18 /* Exceptions for "YearDotsWidget" folder in "YearDotsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E46AEB842F12EC1000B40B18 /* YearDotsWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E46AEB582F12B1C400B40B18 /* YearDotsCountdown */ = {
@@ -43,6 +83,14 @@
 		E46AEB702F12B1C500B40B18 /* YearDotsCountdownUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = YearDotsCountdownUITests;
+			sourceTree = "<group>";
+		};
+		E46AEB8B2F12EC1000B40B18 /* YearDotsWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E46AEB962F12EC1100B40B18 /* Exceptions for "YearDotsWidget" folder in "YearDotsWidgetExtension" target */,
+			);
+			path = YearDotsWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E46AEB822F12EC1000B40B18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E46AEB8A2F12EC1000B40B18 /* SwiftUI.framework in Frameworks */,
+				E46AEB882F12EC1000B40B18 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +135,8 @@
 				E46AEB582F12B1C400B40B18 /* YearDotsCountdown */,
 				E46AEB662F12B1C500B40B18 /* YearDotsCountdownTests */,
 				E46AEB702F12B1C500B40B18 /* YearDotsCountdownUITests */,
+				E46AEB8B2F12EC1000B40B18 /* YearDotsWidget */,
+				E46AEB862F12EC1000B40B18 /* Frameworks */,
 				E46AEB572F12B1C400B40B18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +147,18 @@
 				E46AEB562F12B1C400B40B18 /* YearDotsCountdown.app */,
 				E46AEB632F12B1C500B40B18 /* YearDotsCountdownTests.xctest */,
 				E46AEB6D2F12B1C500B40B18 /* YearDotsCountdownUITests.xctest */,
+				E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E46AEB862F12EC1000B40B18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E46AEB872F12EC1000B40B18 /* WidgetKit.framework */,
+				E46AEB892F12EC1000B40B18 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +171,12 @@
 				E46AEB522F12B1C400B40B18 /* Sources */,
 				E46AEB532F12B1C400B40B18 /* Frameworks */,
 				E46AEB542F12B1C400B40B18 /* Resources */,
+				E46AEB9A2F12EC1100B40B18 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E46AEB942F12EC1100B40B18 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				E46AEB582F12B1C400B40B18 /* YearDotsCountdown */,
@@ -163,6 +234,28 @@
 			productReference = E46AEB6D2F12B1C500B40B18 /* YearDotsCountdownUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		E46AEB842F12EC1000B40B18 /* YearDotsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E46AEB972F12EC1100B40B18 /* Build configuration list for PBXNativeTarget "YearDotsWidgetExtension" */;
+			buildPhases = (
+				E46AEB812F12EC1000B40B18 /* Sources */,
+				E46AEB822F12EC1000B40B18 /* Frameworks */,
+				E46AEB832F12EC1000B40B18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E46AEB8B2F12EC1000B40B18 /* YearDotsWidget */,
+			);
+			name = YearDotsWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = YearDotsWidgetExtension;
+			productReference = E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +277,9 @@
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = E46AEB552F12B1C400B40B18;
 					};
+					E46AEB842F12EC1000B40B18 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 				};
 			};
 			buildConfigurationList = E46AEB512F12B1C400B40B18 /* Build configuration list for PBXProject "YearDotsCountdown" */;
@@ -203,6 +299,7 @@
 				E46AEB552F12B1C400B40B18 /* YearDotsCountdown */,
 				E46AEB622F12B1C500B40B18 /* YearDotsCountdownTests */,
 				E46AEB6C2F12B1C500B40B18 /* YearDotsCountdownUITests */,
+				E46AEB842F12EC1000B40B18 /* YearDotsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E46AEB6B2F12B1C500B40B18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46AEB832F12EC1000B40B18 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E46AEB812F12EC1000B40B18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = E46AEB552F12B1C400B40B18 /* YearDotsCountdown */;
 			targetProxy = E46AEB6E2F12B1C500B40B18 /* PBXContainerItemProxy */;
+		};
+		E46AEB942F12EC1100B40B18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E46AEB842F12EC1000B40B18 /* YearDotsWidgetExtension */;
+			targetProxy = E46AEB932F12EC1100B40B18 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -573,6 +689,75 @@
 			};
 			name = Release;
 		};
+		E46AEB982F12EC1100B40B18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 322C5KM9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YearDotsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YearDotsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lumina.YearDotsCountdown.YearDotsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		E46AEB992F12EC1100B40B18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 322C5KM9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YearDotsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YearDotsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lumina.YearDotsCountdown.YearDotsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -608,6 +793,15 @@
 			buildConfigurations = (
 				E46AEB7E2F12B1C500B40B18 /* Debug */,
 				E46AEB7F2F12B1C500B40B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E46AEB972F12EC1100B40B18 /* Build configuration list for PBXNativeTarget "YearDotsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E46AEB982F12EC1100B40B18 /* Debug */,
+				E46AEB992F12EC1100B40B18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
