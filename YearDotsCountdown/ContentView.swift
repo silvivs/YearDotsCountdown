@@ -47,7 +47,7 @@ struct ContentView: View {
                             .foregroundColor(.red)
                             .font(.system(size: 34, weight: .bold)) // Large title size
                         
-                        Text("Countdown")
+                        Text("Year Tracker")
                             .font(.system(size: 34, weight: .bold))
                     }
                     .padding(.horizontal) // Aligns with the rest of your content
