@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+internal import Combine
 
 struct ContentView: View {
+    @State private var now = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var isPulsing = false
     
     // 1. Automatic calculation of days in the year (includes leap years)
@@ -30,6 +33,18 @@ struct ContentView: View {
     var currentYear: String {
         let year = Calendar.current.component(.year, from: Date())
         return String(year) // E.g.: This converts the number 2026 into text "2026"
+    }
+    
+    // 4. Variable to calculate how much time is left until midnight on December 31st
+    
+    var timeRemaining: String {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: now)
+        guard let nextYear = calendar.date(from: DateComponents(year: year + 1)) else {return ""}
+        
+        let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: nextYear)
+        
+        return "\(diff.day ?? 0)d \(diff.hour ?? 0)h \(diff.minute ?? 0)m \(diff.second ?? 0)s"
     }
     
     // Grid configuration (20 columns of points)
@@ -72,10 +87,20 @@ struct ContentView: View {
     // Header component
     var headerView: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text("Today is \(currentDayOfYear) of \(daysInYear)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                
+                // Interactive counter
+                Text(timeRemaining)
+                    .font(.system(.title3, design: .monospaced))
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .onReceive(timer) { input in
+                            now = input // this updates the counter each second
+                    }
+                
                 Text("Progress: \(Double(currentDayOfYear) / Double(daysInYear) * 100, specifier: "%.1f")%")
                     .font(.caption)
                     .bold()
