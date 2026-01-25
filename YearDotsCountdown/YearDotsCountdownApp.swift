@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct YearDotsCountdownApp: App {
@@ -13,5 +14,7 @@ struct YearDotsCountdownApp: App {
         WindowGroup {
             ContentView()
         }
+        // Initializing the persistent container for LifeMilestone
+        .modelContainer(for: LifeMilestone.self)
     }
 }
