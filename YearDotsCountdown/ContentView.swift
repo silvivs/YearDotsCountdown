@@ -19,6 +19,10 @@ struct ContentView: View {
     @State private var isPulsing = false
     @State private var showingAddMilestone = false // Controls the sheet
     
+    // MARK: - Interaction State
+    // Keeps track of which milestone is currently selected by the user
+    @State private var selectedMilestone: LifeMilestone?
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     // 1. Automatic calculation of days in the year (includes leap years)
@@ -118,9 +122,30 @@ struct ContentView: View {
     var headerView: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Today is \(currentDayOfYear) of \(daysInYear)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                // Check if there is a selected milestone to display its title
+                if let milestone = selectedMilestone {
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.purple)
+                        Text(milestone.title)
+                            .font(.headline)
+                            .foregroundColor(.purple)
+                        
+                        // Button to clear the selection
+                        Button {
+                            selectedMilestone = nil
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                } else {
+                    Text("Today is \(currentDayOfYear) of \(daysInYear)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .transition(.opacity)
+                }
                 
                 // Interactive counter
                 Text(timeRemaining)
@@ -155,8 +180,8 @@ struct ContentView: View {
             return milestoneDay == day && milestoneYear == currentYearInt
         }
         
-        if dayMilestones != nil {
-            // MILESTONE: Special highlight
+        if let milestone = dayMilestones {
+            // MILESTONE: Special highlight with tap interaction
             Circle()
                 .fill(Color.purple)
                 .frame(width: 10, height: 10)
@@ -164,6 +189,12 @@ struct ContentView: View {
                 .overlay(
                     Circle().stroke(Color.white, lineWidth: 1)
                 )
+            // Action when the user taps the milestone dot
+                .onTapGesture {
+                    withAnimation(.spring()) {
+                        selectedMilestone = milestone
+                    }
+                }
         } else if day == currentDayOfYear {
             // Today: Pulsing green dot
             Circle()
