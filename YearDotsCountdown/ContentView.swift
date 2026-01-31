@@ -43,13 +43,24 @@ struct ContentView: View {
         return String(year) // E.g.: This converts the number 2026 into text "2026"
     }
     
+    // 3.1 Get the next year as a number (e.g., 2027)
+    var nextYearValue: Int {
+        let currentYearInt = Calendar.current.component(.year, from: now)
+        return currentYearInt + 1
+    }
+    
     // 4. Variable to calculate how much time is left
         var timeRemaining: String {
             let calendar = Calendar.current
             let year = calendar.component(.year, from: now)
-            guard let nextYear = calendar.date(from: DateComponents(year: year + 1)) else { return "" }
-            let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: nextYear)
-            return "\(diff.day ?? 0)d \(diff.hour ?? 0)h \(diff.minute ?? 0)m \(diff.second ?? 0)s"
+            
+            // Atempt to get the first second of January 1st of the next year
+            guard let nextYearDate = calendar.date(from: DateComponents(year: year + 1)) else { return "" }
+            
+            let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: nextYearDate)
+            
+            // Formatting the string with the target year
+            return "\(diff.day ?? 0)d \(diff.hour ?? 0)h \(diff.minute ?? 0)m \(diff.second ?? 0)s to \(nextYearValue)"
         }
     
     // Grid configuration (20 columns of points)
