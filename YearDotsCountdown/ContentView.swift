@@ -67,6 +67,24 @@ struct ContentView: View {
             return "\(diff.day ?? 0)d \(diff.hour ?? 0)h \(diff.minute ?? 0)m \(diff.second ?? 0)s to \(nextYearValue)"
         }
     
+    // Function to calculate the time until an event
+    func timeUntil(_ date: Date) -> String {
+        let calendar = Calendar.current
+        let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: date)
+        
+        let d = diff.day ?? 0
+        let h = diff.hour ?? 0
+        let m = diff.minute ?? 0
+        let s = diff.second ?? 0
+        
+        if d < 0 || h < 0 || m < 0 || s < 0 {
+            return "Happened!"
+        }
+        
+        return "\(d)d \(h)h \(m)m \(s)s left"
+        
+    }
+    
     // Grid configuration (20 columns of points)
     let columns = Array(repeating: GridItem(.flexible(), spacing: 6), count: 20)
     
@@ -236,6 +254,12 @@ struct ContentView: View {
                 Text(milestone.title)
                     .font(.headline)
                     .foregroundColor(.purple)
+                
+                // Specific counter until to selected event
+                Text(timeUntil(milestone.date))
+                    .font(.system(.caption, design: .monospaced))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.purple.opacity(0.8))
             }
 
             Spacer()
