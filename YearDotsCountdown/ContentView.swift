@@ -178,6 +178,7 @@ struct ContentView: View {
                 )
             // Action when the user taps the milestone dot
                 .onTapGesture {
+                    triggerHaptics()
                     withAnimation(.spring()) {
                         selectedMilestone = milestone
                     }
@@ -208,10 +209,18 @@ struct ContentView: View {
     
     // MARK: - Database Actions
     private func deleteMilestone(_ milestone: LifeMilestone) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         withAnimation {
             modelContext.delete(milestone)
             selectedMilestone = nil
         }
+    }
+    
+    // MARK: - Haptics
+    func triggerHaptics() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
 
     // MARK: - Detail View Component
