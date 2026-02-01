@@ -70,6 +70,7 @@ struct ContentView: View {
     // Grid configuration (20 columns of points)
     let columns = Array(repeating: GridItem(.flexible(), spacing: 6), count: 20)
     
+    // MARK: Body
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -87,7 +88,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal) // Aligns with the rest of your content
                     
-                    headerView // This is your "Today is 10" section
+                    headerView // This is "Today is 10" section
                     
                     LazyVGrid(columns: columns, spacing: 8) {
                         ForEach(1...daysInYear, id: \.self) { day in
@@ -99,6 +100,11 @@ struct ContentView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(15)
                     .padding(.horizontal)
+                    
+                    if let milestone = selectedMilestone {
+                        milestoneDetailCard(milestone)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                    }
                 }
                 .padding(.top) // Adds some space at the very top
             }
@@ -122,30 +128,11 @@ struct ContentView: View {
     var headerView: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                // Check if there is a selected milestone to display its title
-                if let milestone = selectedMilestone {
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.purple)
-                        Text(milestone.title)
-                            .font(.headline)
-                            .foregroundColor(.purple)
-                        
-                        // Button to clear the selection
-                        Button {
-                            selectedMilestone = nil
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                } else {
-                    Text("Today is \(currentDayOfYear) of \(daysInYear)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .transition(.opacity)
-                }
+                 Text("Today is \(currentDayOfYear) of \(daysInYear)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                   // .transition(.opacity)
+                
                 
                 // Interactive counter
                 Text(timeRemaining)
@@ -217,6 +204,61 @@ struct ContentView: View {
                 .fill(Color.gray.opacity(0.2))
                 .frame(width: 8, height: 8)
         }
+    }
+    
+    // MARK: - Database Actions
+    private func deleteMilestone(_ milestone: LifeMilestone) {
+        withAnimation {
+            modelContext.delete(milestone)
+            selectedMilestone = nil
+        }
+    }
+
+    // MARK: - Detail View Component
+    @ViewBuilder
+    private func milestoneDetailCard(_ milestone: LifeMilestone) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Selected Event")
+                    .font(.caption2)
+                    .textCase(.uppercase)
+                    .foregroundColor(.secondary)
+
+                Text(milestone.title)
+                    .font(.headline)
+                    .foregroundColor(.purple)
+            }
+
+            Spacer()
+            
+            // Delete button
+            Button {
+                deleteMilestone(milestone)
+            } label: {
+                Image(systemName: "trash.fill")
+                    .foregroundColor(.red)
+                    .padding(8)
+                    .background(Color.red.opacity(0.1))
+                    .clipShape(Circle())
+            }
+            
+            // Close button
+            Button {
+                withAnimation { selectedMilestone = nil}
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundColor(.gray)
+                    .font(.title3)
+            }
+        }
+        .padding()
+        .background(Color.purple.opacity(0.05))
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.purple.opacity(0.2), lineWidth: 1)
+        )
+        .padding(.horizontal)
     }
     
 }
