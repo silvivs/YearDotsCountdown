@@ -137,7 +137,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingAddMilestone) {
-                AddMilestoneView()
+                AddMilestoneView(milestoneToEdit: selectedMilestone)
             }
         }
     }
@@ -263,6 +263,16 @@ struct ContentView: View {
             }
 
             Spacer()
+            
+            // Edit button
+            Button {
+                showingAddMilestone = true
+            } label: {
+                Image(systemName: "pencil.circle.fill")
+                    .foregroundColor(.blue)
+                    .font(.title3)
+            }
+            .padding(.trailing, 4)
             
             // Delete button
             Button {
