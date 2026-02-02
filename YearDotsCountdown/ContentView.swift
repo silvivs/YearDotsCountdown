@@ -12,6 +12,7 @@ import Combine
 struct ContentView: View {
     // MARK: - Persistence Properties
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @Query private var milestones: [LifeMilestone] // Fetches saved milestones
     
     // MARK: State Properties
@@ -158,7 +159,10 @@ struct ContentView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .onReceive(timer) { input in
+                        // Only update "now" if the app is on foreground
+                        if scenePhase == .active {
                             now = input // this updates the counter each second
+                        }
                     }
                 
                 Text("Progress: \(Double(currentDayOfYear) / Double(daysInYear) * 100, specifier: "%.1f")%")
