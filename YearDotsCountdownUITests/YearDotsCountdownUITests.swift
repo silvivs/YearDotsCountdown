@@ -8,34 +8,33 @@
 import XCTest
 
 final class YearDotsCountdownUITests: XCTestCase {
-
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testAddMilestoneFlow() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+        
+        // Step 1: Try to find and tap on Add button
+        let addButton = app.buttons["plus.circle.fill"]
+        XCTAssert(addButton.waitForExistence(timeout: 5), "The add button was not found")
+        addButton.tap()
+        
+        // Step 2: Type a title in the form
+        let titleTextField = app.textFields["Milestone Title"]
+        XCTAssertTrue(titleTextField.waitForExistence(timeout: 5), "The text field was not found")
+        titleTextField.tap()
+        titleTextField.typeText("Study Swift")
+        
+        // Step 3: Click on Save
+        let saveButton = app.buttons["Save"]
+        XCTAssertTrue(saveButton.exists)
+        saveButton.tap()
+        
+        // Step 4: Go back to main screen and verify if the app title is displayed
+        XCTAssertTrue(app.staticTexts["Year Tracker"].waitForExistence(timeout: 2), "The app title was not displayed")
     }
 }

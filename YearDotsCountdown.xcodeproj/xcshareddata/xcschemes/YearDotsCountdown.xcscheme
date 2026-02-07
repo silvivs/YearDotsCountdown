@@ -29,6 +29,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E474404E2F36E1BB00BEEE6F"
+               BuildableName = "YearDotsCountdownTests.xctest"
+               BlueprintName = "YearDotsCountdownTests"
+               ReferencedContainer = "container:YearDotsCountdown.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E46AEB6C2F12B1C500B40B18"
+               BuildableName = "YearDotsCountdownUITests.xctest"
+               BlueprintName = "YearDotsCountdownUITests"
+               ReferencedContainer = "container:YearDotsCountdown.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

@@ -237,8 +237,10 @@ struct ContentView: View {
         // 1. Cancel the notification before deleting the data
         cancelNotification(for: milestone)
         
+        #if os(iOS)
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
+        #endif
         withAnimation {
             // 2. Remove from database
             modelContext.delete(milestone)
@@ -248,8 +250,10 @@ struct ContentView: View {
     
     // MARK: - Haptics
     func triggerHaptics() {
+        #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
+        #endif
     }
 
     // MARK: - Detail View Component

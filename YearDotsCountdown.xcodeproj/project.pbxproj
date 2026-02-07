@@ -13,13 +13,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E46AEB642F12B1C500B40B18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E46AEB4E2F12B1C400B40B18 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E46AEB552F12B1C400B40B18;
-			remoteInfo = YearDotsCountdown;
-		};
 		E46AEB6E2F12B1C500B40B18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E46AEB4E2F12B1C400B40B18 /* Project object */;
@@ -33,6 +26,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E46AEB842F12EC1000B40B18;
 			remoteInfo = YearDotsWidgetExtension;
+		};
+		E47440532F36E1BB00BEEE6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E46AEB4E2F12B1C400B40B18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E46AEB552F12B1C400B40B18;
+			remoteInfo = YearDotsCountdown;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -52,11 +52,11 @@
 
 /* Begin PBXFileReference section */
 		E46AEB562F12B1C400B40B18 /* YearDotsCountdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YearDotsCountdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E46AEB632F12B1C500B40B18 /* YearDotsCountdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YearDotsCountdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46AEB6D2F12B1C500B40B18 /* YearDotsCountdownUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YearDotsCountdownUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YearDotsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46AEB872F12EC1000B40B18 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E46AEB892F12EC1000B40B18 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E474404F2F36E1BB00BEEE6F /* YearDotsCountdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YearDotsCountdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -75,11 +75,6 @@
 			path = YearDotsCountdown;
 			sourceTree = "<group>";
 		};
-		E46AEB662F12B1C500B40B18 /* YearDotsCountdownTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = YearDotsCountdownTests;
-			sourceTree = "<group>";
-		};
 		E46AEB702F12B1C500B40B18 /* YearDotsCountdownUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = YearDotsCountdownUITests;
@@ -93,17 +88,15 @@
 			path = YearDotsWidget;
 			sourceTree = "<group>";
 		};
+		E47440502F36E1BB00BEEE6F /* YearDotsCountdownTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = YearDotsCountdownTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E46AEB532F12B1C400B40B18 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E46AEB602F12B1C500B40B18 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,6 +119,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E474404C2F36E1BB00BEEE6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -133,9 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				E46AEB582F12B1C400B40B18 /* YearDotsCountdown */,
-				E46AEB662F12B1C500B40B18 /* YearDotsCountdownTests */,
 				E46AEB702F12B1C500B40B18 /* YearDotsCountdownUITests */,
 				E46AEB8B2F12EC1000B40B18 /* YearDotsWidget */,
+				E47440502F36E1BB00BEEE6F /* YearDotsCountdownTests */,
 				E46AEB862F12EC1000B40B18 /* Frameworks */,
 				E46AEB572F12B1C400B40B18 /* Products */,
 			);
@@ -145,9 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				E46AEB562F12B1C400B40B18 /* YearDotsCountdown.app */,
-				E46AEB632F12B1C500B40B18 /* YearDotsCountdownTests.xctest */,
 				E46AEB6D2F12B1C500B40B18 /* YearDotsCountdownUITests.xctest */,
 				E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */,
+				E474404F2F36E1BB00BEEE6F /* YearDotsCountdownTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,29 +187,6 @@
 			productName = YearDotsCountdown;
 			productReference = E46AEB562F12B1C400B40B18 /* YearDotsCountdown.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E46AEB622F12B1C500B40B18 /* YearDotsCountdownTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E46AEB7A2F12B1C500B40B18 /* Build configuration list for PBXNativeTarget "YearDotsCountdownTests" */;
-			buildPhases = (
-				E46AEB5F2F12B1C500B40B18 /* Sources */,
-				E46AEB602F12B1C500B40B18 /* Frameworks */,
-				E46AEB612F12B1C500B40B18 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E46AEB652F12B1C500B40B18 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E46AEB662F12B1C500B40B18 /* YearDotsCountdownTests */,
-			);
-			name = YearDotsCountdownTests;
-			packageProductDependencies = (
-			);
-			productName = YearDotsCountdownTests;
-			productReference = E46AEB632F12B1C500B40B18 /* YearDotsCountdownTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E46AEB6C2F12B1C500B40B18 /* YearDotsCountdownUITests */ = {
 			isa = PBXNativeTarget;
@@ -256,6 +233,29 @@
 			productReference = E46AEB852F12EC1000B40B18 /* YearDotsWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		E474404E2F36E1BB00BEEE6F /* YearDotsCountdownTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E47440552F36E1BB00BEEE6F /* Build configuration list for PBXNativeTarget "YearDotsCountdownTests" */;
+			buildPhases = (
+				E474404B2F36E1BB00BEEE6F /* Sources */,
+				E474404C2F36E1BB00BEEE6F /* Frameworks */,
+				E474404D2F36E1BB00BEEE6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E47440542F36E1BB00BEEE6F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E47440502F36E1BB00BEEE6F /* YearDotsCountdownTests */,
+			);
+			name = YearDotsCountdownTests;
+			packageProductDependencies = (
+			);
+			productName = YearDotsCountdownTests;
+			productReference = E474404F2F36E1BB00BEEE6F /* YearDotsCountdownTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,16 +269,16 @@
 					E46AEB552F12B1C400B40B18 = {
 						CreatedOnToolsVersion = 26.2;
 					};
-					E46AEB622F12B1C500B40B18 = {
-						CreatedOnToolsVersion = 26.2;
-						TestTargetID = E46AEB552F12B1C400B40B18;
-					};
 					E46AEB6C2F12B1C500B40B18 = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = E46AEB552F12B1C400B40B18;
 					};
 					E46AEB842F12EC1000B40B18 = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					E474404E2F36E1BB00BEEE6F = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = E46AEB552F12B1C400B40B18;
 					};
 				};
 			};
@@ -297,22 +297,15 @@
 			projectRoot = "";
 			targets = (
 				E46AEB552F12B1C400B40B18 /* YearDotsCountdown */,
-				E46AEB622F12B1C500B40B18 /* YearDotsCountdownTests */,
 				E46AEB6C2F12B1C500B40B18 /* YearDotsCountdownUITests */,
 				E46AEB842F12EC1000B40B18 /* YearDotsWidgetExtension */,
+				E474404E2F36E1BB00BEEE6F /* YearDotsCountdownTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E46AEB542F12B1C400B40B18 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E46AEB612F12B1C500B40B18 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -333,17 +326,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		E46AEB522F12B1C400B40B18 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		E474404D2F36E1BB00BEEE6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E46AEB5F2F12B1C500B40B18 /* Sources */ = {
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E46AEB522F12B1C400B40B18 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,14 +357,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E474404B2F36E1BB00BEEE6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E46AEB652F12B1C500B40B18 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E46AEB552F12B1C400B40B18 /* YearDotsCountdown */;
-			targetProxy = E46AEB642F12B1C500B40B18 /* PBXContainerItemProxy */;
-		};
 		E46AEB6F2F12B1C500B40B18 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E46AEB552F12B1C400B40B18 /* YearDotsCountdown */;
@@ -381,6 +376,15 @@
 			isa = PBXTargetDependency;
 			target = E46AEB842F12EC1000B40B18 /* YearDotsWidgetExtension */;
 			targetProxy = E46AEB932F12EC1100B40B18 /* PBXContainerItemProxy */;
+		};
+		E47440542F36E1BB00BEEE6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				xros,
+			);
+			target = E46AEB552F12B1C400B40B18 /* YearDotsCountdown */;
+			targetProxy = E47440532F36E1BB00BEEE6F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -587,58 +591,6 @@
 			};
 			name = Release;
 		};
-		E46AEB7B2F12B1C500B40B18 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 322C5KM9KJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				MACOSX_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Lumina.YearDotsCountdownTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YearDotsCountdown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YearDotsCountdown";
-				XROS_DEPLOYMENT_TARGET = 26.2;
-			};
-			name = Debug;
-		};
-		E46AEB7C2F12B1C500B40B18 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 322C5KM9KJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				MACOSX_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Lumina.YearDotsCountdownTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YearDotsCountdown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YearDotsCountdown";
-				XROS_DEPLOYMENT_TARGET = 26.2;
-			};
-			name = Release;
-		};
 		E46AEB7E2F12B1C500B40B18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -758,6 +710,57 @@
 			};
 			name = Release;
 		};
+		E47440562F36E1BB00BEEE6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 322C5KM9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lumina.YearDotsCountdownTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YearDotsCountdown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YearDotsCountdown";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		E47440572F36E1BB00BEEE6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 322C5KM9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lumina.YearDotsCountdownTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YearDotsCountdown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YearDotsCountdown";
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -779,15 +782,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E46AEB7A2F12B1C500B40B18 /* Build configuration list for PBXNativeTarget "YearDotsCountdownTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E46AEB7B2F12B1C500B40B18 /* Debug */,
-				E46AEB7C2F12B1C500B40B18 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E46AEB7D2F12B1C500B40B18 /* Build configuration list for PBXNativeTarget "YearDotsCountdownUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -802,6 +796,15 @@
 			buildConfigurations = (
 				E46AEB982F12EC1100B40B18 /* Debug */,
 				E46AEB992F12EC1100B40B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E47440552F36E1BB00BEEE6F /* Build configuration list for PBXNativeTarget "YearDotsCountdownTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E47440562F36E1BB00BEEE6F /* Debug */,
+				E47440572F36E1BB00BEEE6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
