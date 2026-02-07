@@ -140,6 +140,9 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddMilestone) {
                 AddMilestoneView(milestoneToEdit: selectedMilestone)
             }
+            .onAppear {
+                requestNotificationPermission()
+            }
         }
     }
     
@@ -231,9 +234,13 @@ struct ContentView: View {
     
     // MARK: - Database Actions
     private func deleteMilestone(_ milestone: LifeMilestone) {
+        // 1. Cancel the notification before deleting the data
+        cancelNotification(for: milestone)
+        
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         withAnimation {
+            // 2. Remove from database
             modelContext.delete(milestone)
             selectedMilestone = nil
         }
