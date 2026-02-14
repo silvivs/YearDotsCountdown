@@ -192,21 +192,33 @@ struct ContentView: View {
             return milestoneDay == day && milestoneYear == currentYearInt
         }
         
-        if let milestone = dayMilestones {
+        if let milestone = dayMilestones, day == currentDayOfYear {
             // MILESTONE: Special highlight with tap interaction
             Circle()
-                .fill(Color.purple)
+                .fill(Color.red)
                 .frame(width: 10, height: 10)
-                .shadow(color: .purple.opacity(0.6), radius: 4)
+                .scaleEffect(isPulsing ? 1.4 : 1.0)
+                .shadow(color: .red, radius: isPulsing ? 8 : 2)
+                .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isPulsing)
                 .overlay(
                     Circle().stroke(Color.white, lineWidth: 1)
                 )
             // Action when the user taps the milestone dot
                 .onTapGesture {
                     triggerHaptics()
-                    withAnimation(.spring()) {
-                        selectedMilestone = milestone
-                    }
+                    withAnimation(.spring()) { selectedMilestone = milestone }
+                }
+                .onAppear { isPulsing = true }
+            
+        } else if let milestone = dayMilestones{
+            Circle()
+                .fill(Color.purple)
+                .frame(width: 10, height: 10)
+                .shadow(color: .purple.opacity(0.6), radius: 4)
+                .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                .onTapGesture {
+                    triggerHaptics()
+                    withAnimation(.spring()) { selectedMilestone = milestone }
                 }
         } else if day == currentDayOfYear {
             // Today: Pulsing green dot
@@ -269,6 +281,10 @@ struct ContentView: View {
                 Text(milestone.title)
                     .font(.headline)
                     .foregroundColor(.purple)
+                
+                Text(milestone.date.formatted(date: .long, time: .omitted))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
                 
                 // Specific counter until to selected event
                 Text(timeUntil(milestone.date))
