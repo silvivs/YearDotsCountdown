@@ -36,4 +36,14 @@ final class YearDotsCountdownTests: XCTestCase {
         
         XCTAssertEqual(result, "Happened!", "Error: The function should return 'Happened!' for a past date")
     }
+    
+    // TEST 3: To verify if the counter shows the string "left" for future events
+    func testTimeUntilFutureEvent() {
+        // Create a date set 2 days in the future.
+        let futureDate = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        let result = contentView.timeUntil(futureDate)
+        
+        // Check if the resulting string ends with "left".
+        XCTAssertTrue(result.contains("left"), "Erro: It should indicate the remaining time with 'left'")
+    }
 }
