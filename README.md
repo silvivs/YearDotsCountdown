@@ -106,14 +106,6 @@ YearDotsCountdown includes both **Unit Tests** and **UI Automation Tests** via t
 
 ---
 
-## Screenshots & Demo
-
-| Year Grid View | Milestone Details | Add / Edit Milestone |
-| :---: | :---: | :---: |
-| *(Add your screenshot link here)* | *(Add your screenshot link here)* | *(Add your screenshot link here)* |
-
----
-
 ## Roadmap & Future Enhancements
 
 - [ ] **Lock Screen & Home Screen Widgets:** Quick view of the year progress and next milestone via WidgetKit.
