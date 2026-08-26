@@ -21,6 +21,8 @@ struct ContentView: View {
     @State private var showingAddMilestone = false // Controls the sheet
     @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
     @State private var edittingMilestone: LifeMilestone?
+    @State private var showingSettings = false
+    @AppStorage("hapticsEnabled") private var hapticsEnabled: Bool = true
     
     // MARK: - Interaction State
     // Keeps track of which milestone is currently selected by the user
@@ -168,9 +170,18 @@ struct ContentView: View {
                 .padding(.top) // Adds some space at the very top
             }
             .toolbar {
+                // Settings button (left side)
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showingSettings = true
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.title3)
+                    }
+                }
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        // selectedMilestone = nil // Make sure no previous event is selected
+                        selectedMilestone = nil // Make sure no previous event is selected
                         showingAddMilestone = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
@@ -183,6 +194,9 @@ struct ContentView: View {
             }
             .sheet(item: $edittingMilestone) { milestone in
                 AddMilestoneView(milestoneToEdit: milestone)
+            }
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
             }
             .onAppear {
                 requestNotificationPermission()
@@ -291,9 +305,12 @@ struct ContentView: View {
         cancelNotification(for: milestone)
         
         #if os(iOS)
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
+        if hapticsEnabled {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
         #endif
+        
         withAnimation {
             // 2. Remove from database
             modelContext.delete(milestone)
@@ -303,6 +320,8 @@ struct ContentView: View {
     
     // MARK: - Haptics
     func triggerHaptics() {
+        guard hapticsEnabled else { return } // Stops if the user has disabled it.
+        
         #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
