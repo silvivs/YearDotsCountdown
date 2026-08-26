@@ -25,12 +25,18 @@ struct AddMilestoneView: View {
                 }
             }
             .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    // AddMilestoneView.swift - Cancel Button logic
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     // AddMilestoneView.swift - Save Button logic
                     Button("Save") {
                         saveMilestone()
                     }
-                    .disabled(title.isEmpty)
+                    .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
         }

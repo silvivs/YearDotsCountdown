@@ -11,7 +11,7 @@ import SwiftData
 // MARK: - Database Model
 // The @Model macro enables SwiftData to save this class to the device's storage
 @Model
-final class LifeMilestone {
+final class LifeMilestone: Identifiable {
     var id: UUID = UUID()
     var date: Date
     var title: String

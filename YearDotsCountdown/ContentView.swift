@@ -19,6 +19,8 @@ struct ContentView: View {
     @State private var now = Date()
     @State private var isPulsing = false
     @State private var showingAddMilestone = false // Controls the sheet
+    @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
+    @State private var edittingMilestone: LifeMilestone?
     
     // MARK: - Interaction State
     // Keeps track of which milestone is currently selected by the user
@@ -28,8 +30,9 @@ struct ContentView: View {
     
     // 1. Automatic calculation of days in the year (includes leap years)
     var daysInYear: Int {
-        let year = Calendar.current.component(.year, from: Date())
-        let dateComponents = DateComponents(year: year)
+        _ = Calendar.current.component(.year, from: Date())
+        // let dateComponents = DateComponents(year: year)
+        let dateComponents = DateComponents(year: selectedYear)
         if let date = Calendar.current.date(from: dateComponents),
            let range = Calendar.current.range(of: .day, in: .year, for: date) {
             return range.count
@@ -37,34 +40,42 @@ struct ContentView: View {
         return 365
     }
     
-    // 2. Find out what today's date number is (1 to 366)
+    // 2. Find out today's number (only if it is the current year, otherwise return 0 or the end of the year)
     var currentDayOfYear: Int {
-        Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 0
+        //Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 0
+        let currentYearInt = Calendar.current.component(.year, from: Date())
+        if selectedYear == currentYearInt {
+            return Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 0
+        } else if selectedYear < currentYearInt {
+            return daysInYear + 1 // To paint the past completely blue
+        } else {
+            return 0 // To leave the future clean grey
+        }
     }
     
     // 3. The current year
     var currentYear: String {
-        let year = Calendar.current.component(.year, from: Date())
-        return String(year) // E.g.: This converts the number 2026 into text "2026"
+        //let year = Calendar.current.component(.year, from: Date())
+        return String(selectedYear)
     }
     
-    // 3.1 Get the next year as a number (e.g., 2027)
+    // 3.1 Take the next year relative to what is selected
     var nextYearValue: Int {
-        let currentYearInt = Calendar.current.component(.year, from: now)
-        return currentYearInt + 1
+        // let currentYearInt = Calendar.current.component(.year, from: now)
+        return selectedYear + 1
     }
     
-    // 4. Variable to calculate how much time is left
+    // 4. Modify the Timer to calculate the countdown based on the end of the selected year
         var timeRemaining: String {
             let calendar = Calendar.current
-            let year = calendar.component(.year, from: now)
-            
-            // Atempt to get the first second of January 1st of the next year
-            guard let nextYearDate = calendar.date(from: DateComponents(year: year + 1)) else { return "" }
-            
-            let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: nextYearDate)
-            
-            // Formatting the string with the target year
+            guard let targetYearDate = calendar.date(from: DateComponents(year: selectedYear + 1)) else {
+                return ""
+            }
+            // If the selected year has already passed, we change the text of the metre
+            if selectedYear < calendar.component(.year, from: now) {
+                return "Year \(selectedYear) finished!"
+            }
+            let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: targetYearDate)
             return "\(diff.day ?? 0)d \(diff.hour ?? 0)h \(diff.minute ?? 0)m \(diff.second ?? 0)s to \(nextYearValue)"
         }
     
@@ -96,16 +107,45 @@ struct ContentView: View {
                 // alignment: .leading keeps everything to the left
                 VStack(alignment: .leading, spacing: 20) {
                     
-                    // TITLE SECTION
-                    HStack(spacing: 6) {
-                        Text("\(currentYear)")
-                            .foregroundColor(.red)
-                            .font(.system(size: 34, weight: .bold)) // Large title size
+                    // TITLE SECTION COM NAVEGADOR
+                    HStack(spacing: 15) {
+                        // Botão Voltar Ano
+                        Button {
+                            withAnimation(.easeInOut) {
+                                selectedYear -= 1
+                                selectedMilestone = nil // Fecha o card se mudar de ano
+                            }
+                        } label: {
+                            Image(systemName: "chevron.left.circle.fill")
+                                .font(.title2)
+                                .foregroundColor(.secondary)
+                        }
                         
-                        Text("Year Tracker")
-                            .font(.system(size: 34, weight: .bold))
+                        // Exibição do Ano e Título
+                        HStack(spacing: 4) {
+                            Text("\(currentYear)")
+                                .foregroundColor(.red)
+                                .font(.system(size: 34, weight: .bold))
+                            
+                            Text("Year Tracker")
+                                .font(.system(size: 34, weight: .bold))
+                        }
+                        
+                        // Botão Avançar Ano
+                        Button {
+                            withAnimation(.easeInOut) {
+                                selectedYear += 1
+                                selectedMilestone = nil
+                            }
+                        } label: {
+                            Image(systemName: "chevron.right.circle.fill")
+                                .font(.title2)
+                                .foregroundColor(.secondary)
+                        }
                     }
-                    .padding(.horizontal) // Aligns with the rest of your content
+                    .padding(.horizontal)
+                    
+                    // stopped here
                     
                     headerView // This is "Today is 10" section
                     
@@ -130,6 +170,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
+                        // selectedMilestone = nil // Make sure no previous event is selected
                         showingAddMilestone = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
@@ -138,7 +179,10 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingAddMilestone) {
-                AddMilestoneView(milestoneToEdit: selectedMilestone)
+                AddMilestoneView(milestoneToEdit: nil)
+            }
+            .sheet(item: $edittingMilestone) { milestone in
+                AddMilestoneView(milestoneToEdit: milestone)
             }
             .onAppear {
                 requestNotificationPermission()
@@ -181,15 +225,12 @@ struct ContentView: View {
     
     @ViewBuilder
     func dotView(for day: Int) -> some View {
-        // MARK: - Refine Milestone Search
         let dayMilestones = milestones.first { item in
-            // Get the day number (1-366) for the saved date and the current dot
             let milestoneDay = Calendar.current.ordinality(of: .day, in: .year, for: item.date)
             let milestoneYear = Calendar.current.component(.year, from: item.date)
-            let currentYearInt = Calendar.current.component(.year, from: Date())
             
-            // Only show if it matches the day AND year
-            return milestoneDay == day && milestoneYear == currentYearInt
+            // MUDANÇA AQUI: Compara com o selectedYear da tela
+            return milestoneDay == day && milestoneYear == selectedYear
         }
         
         if let milestone = dayMilestones, day == currentDayOfYear {
@@ -297,7 +338,7 @@ struct ContentView: View {
             
             // Edit button
             Button {
-                showingAddMilestone = true
+                edittingMilestone = milestone
             } label: {
                 Image(systemName: "pencil.circle.fill")
                     .foregroundColor(.blue)
