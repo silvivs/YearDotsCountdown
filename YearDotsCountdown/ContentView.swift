@@ -68,18 +68,32 @@ struct ContentView: View {
     }
     
     // 4. Modify the Timer to calculate the countdown based on the end of the selected year
-        var timeRemaining: String {
-            let calendar = Calendar.current
-            guard let targetYearDate = calendar.date(from: DateComponents(year: selectedYear + 1)) else {
-                return ""
-            }
-            // If the selected year has already passed, we change the text of the metre
-            if selectedYear < calendar.component(.year, from: now) {
-                return "Year \(selectedYear) finished!"
-            }
-            let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: targetYearDate)
-            return "\(diff.day ?? 0)d \(diff.hour ?? 0)h \(diff.minute ?? 0)m \(diff.second ?? 0)s to \(nextYearValue)"
+    var timeRemaining: String {
+        let calendar = Calendar.current
+        guard let targetYearDate = calendar.date(from: DateComponents(year: selectedYear + 1)) else {
+            return ""
         }
+        
+        // If the selected year has already passed, we change the text of the metre
+        if selectedYear < calendar.component(.year, from: now) {
+            return String(
+                localized: "Year \(String(selectedYear)) finished!",
+                comment: "Message displayed when the selected year has already ended."
+            )
+        }
+        
+        let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: targetYearDate)
+        
+        let days = diff.day ?? 0
+        let hours = diff.hour ?? 0
+        let minutes = diff.minute ?? 0
+        let seconds = diff.second ?? 0
+        
+        return String(
+            localized: "\(days)d \(hours)h \(minutes)m \(seconds)s to \(String(nextYearValue))",
+            comment: "Countdown to next year"
+        )
+    }
     
     // Function to calculate the time until an event
     func timeUntil(_ date: Date) -> String {
@@ -92,11 +106,16 @@ struct ContentView: View {
         let s = diff.second ?? 0
         
         if d < 0 || h < 0 || m < 0 || s < 0 {
-            return "Happened!"
+            return String(
+                localized: "Happened!",
+                comment: "Status displayed when the milestone/event has already passed"
+            )
         }
         
-        return "\(d)d \(h)h \(m)m \(s)s left"
-        
+        return String(
+            localized: "\(d)d \(h)h \(m)m \(s)s left",
+            comment: "Countdown of time remaining until an event"
+        )
     }
     
     // Grid configuration (20 columns of points)
