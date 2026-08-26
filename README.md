@@ -52,6 +52,7 @@ YearDotsCountdown/
 │   └── YearDotsCountdownTests.swift # Unit tests for date calculations and core logic
 └── YearDotsCountdownUITests/
     └── YearDotsCountdownUITests.swift # End-to-end UI automation tests
+```
 
 ---
 
@@ -75,3 +76,53 @@ Ensure you have the following software installed:
    ```bash
    git clone [https://github.com/YOUR_USERNAME/YearDotsCountdown.git](https://github.com/YOUR_USERNAME/YearDotsCountdown.git)
    cd YearDotsCountdown
+   ```
+
+2. **Open the project in Xcode:**
+   ```bash
+   open YearDotsCountdown.xcodeproj
+   ```
+
+3. **Configure Code Signing (For Physical Devices):**
+   * Select the root **YearDotsCountdown** project node in the Project Navigator.
+   * Go to the **Signing & Capabilities** tab.
+   * Select your personal development **Team** from the dropdown menu to sign the build.
+
+4. **Select a Target & Destination:**
+   * In the top toolbar, select the `YearDotsCountdown` scheme.
+   * Choose an active **iOS Simulator** (e.g., iPhone 15 Pro, iPhone 16 Pro) or your connected physical iPhone.
+
+5. **Build and Run:**
+   * Press `Cmd + R` or click the **Play** button in the Xcode toolbar to launch the app.
+
+---
+
+## Running Tests
+
+YearDotsCountdown includes both **Unit Tests** and **UI Automation Tests** via the `XCTest` framework.
+
+* **Run all tests:** Press `Cmd + U` or navigate to **Product > Test** in the menu bar.
+* **Run specific tests:** Open the **Test Navigator** (`Cmd + 6`) to run individual test methods or test classes.
+
+---
+
+## Screenshots & Demo
+
+| Year Grid View | Milestone Details | Add / Edit Milestone |
+| :---: | :---: | :---: |
+| *(Add your screenshot link here)* | *(Add your screenshot link here)* | *(Add your screenshot link here)* |
+
+---
+
+## Roadmap & Future Enhancements
+
+- [ ] **Lock Screen & Home Screen Widgets:** Quick view of the year progress and next milestone via WidgetKit.
+- [ ] **CloudKit Synchronization:** Real-time data sync across Apple devices using iCloud.
+- [ ] **Milestone Categories & Tags:** Custom color codes for work, health, and personal goals.
+- [ ] **Insights & Statistics View:** Visual summaries and progress charts.
+
+---
+
+## Author
+
+Developed by **Philipe Silva**.
