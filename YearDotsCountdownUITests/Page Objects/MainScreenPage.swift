@@ -5,6 +5,8 @@
 //  Created by Jónatas Silva on 16/09/26.
 //
 
+import XCTest
+
 // MARK: - Summary
 
 /// This Page contains elements, actions and validations from Main screen.
@@ -56,7 +58,7 @@ final class MainScreenPage: BasePage {
     }
     
     // MARK: - Validations
-    
+    @discardableResult
         func verifyIsOnMainScreen(timeout: TimeInterval = 5, file: StaticString = #filePath, line: UInt = #line) -> MainScreenPage {
             let exists = screenTitle.waitForExistence(timeout: timeout)
             XCTAssertTrue(

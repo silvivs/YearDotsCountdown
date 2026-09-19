@@ -21,6 +21,10 @@ class BaseTest: XCTestCase {
         
         continueAfterFailure = false
         app = XCUIApplication()
+        
+        // Force English locale during UI tests to keep assertions consistent
+        app.launchArguments += ["AppleLanguages", "(en)", "-AppleLocale", "en-US"]
+        app.launch()
     }
 
     override func tearDownWithError() throws {
